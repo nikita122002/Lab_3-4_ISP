@@ -2,10 +2,9 @@ from django.contrib.auth import login, logout
 from django.shortcuts import render
 from django.contrib import messages
 from django.shortcuts import redirect
-from django.urls import reverse_lazy
 from django.core.mail import send_mail
 from .forms import UserRegisterForm,UserLoginForm,ContactForm
-
+from .models import TourizmType
 
 def home(request):
     return render(request,'main/home.html')
@@ -59,3 +58,8 @@ def user_login(request):
     else:
         form = UserLoginForm()
     return render(request,'main/login.html',{"form": form})
+
+def tourtype(request):
+    tourtype = TourizmType.objects.all()
+    return render(request,'main/tourtype.html',{'tour':tourtype})
+
