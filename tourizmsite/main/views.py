@@ -4,7 +4,8 @@ from django.contrib import messages
 from django.shortcuts import redirect
 from django.core.mail import send_mail
 from .forms import UserRegisterForm,UserLoginForm,ContactForm
-from .models import TourizmType
+from .models import TourizmType, TourPlace
+
 
 def home(request):
     return render(request,'main/home.html')
@@ -62,4 +63,8 @@ def user_login(request):
 def tourtype(request):
     tourtype = TourizmType.objects.all()
     return render(request,'main/tourtype.html',{'tour':tourtype})
+
+def tourplace(request):
+    tourplace = TourPlace.objects.all()
+    return render(request,'main/tourplace.html',{'place':tourplace})
 

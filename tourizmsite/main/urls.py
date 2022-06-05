@@ -1,7 +1,7 @@
 
 from django.urls import path
 from . import views
-from .views import register, user_login, user_logout, feedback, tourtype
+from .views import register, user_login, user_logout, feedback, tourtype, tourplace
 
 urlpatterns =[
 
@@ -11,6 +11,7 @@ urlpatterns =[
     path('logout/',user_logout,name='logout'),
     path('feedback/',feedback,name='feedback'),
     path('tourtype/',tourtype,name='tourtype'),
+    path('tourplace/',tourplace,name='tourplace')
 
 
 

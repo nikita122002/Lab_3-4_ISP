@@ -5,15 +5,15 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Виды туризма</title>
+    <title>Места путешествий</title>
 </head>
 <body>
 
-<h1>Виды туризма</h1>
-{% for item in tour %}
+<h1>Места путешествий</h1>
+{% for item in place %}
 <div>
     <p>{{item.title}}</p>
-    <p>{{item.content}}</p>
+    <p>{{item.decription}}</p>
     <p>{{item.created_at}}</p>
     <p>{{item.photo}}</p>
 </div>
