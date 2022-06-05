@@ -1,6 +1,10 @@
 {% extends 'main/base.html'%}
 {% block content %}
 <span class="navbar-text">
-<a  href="{% url 'register' %}">Регистрация</a> | <a  href="{% url 'login' %}">Войти</a>
+    {%if request.user.is_authenticated%}
+    Добро пожаловать,{{user.username}} | <a href="{%url 'logout'%}">Выход</a>
+    {%else%}
+    <a  href="{% url 'register' %}">Регистрация</a> | <a  href="{% url 'login' %}">Войти</a>
+    {%endif%}
     </span>
 {% endblock %}
