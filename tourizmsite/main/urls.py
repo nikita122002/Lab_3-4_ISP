@@ -1,4 +1,4 @@
-from django.contrib.auth import login
+
 from django.urls import path
 from . import views
 from .views import register, user_login, user_logout

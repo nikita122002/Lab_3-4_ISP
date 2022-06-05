@@ -1,5 +1,13 @@
-{% extends 'main/base.html'%}
-{% block content %}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Главная страница</title>
+</head>
+<body>
 <span class="navbar-text">
     {%if request.user.is_authenticated%}
     Добро пожаловать,{{user.username}} | <a href="{%url 'logout'%}">Выход</a>
@@ -7,4 +15,5 @@
     <a  href="{% url 'register' %}">Регистрация</a> | <a  href="{% url 'login' %}">Войти</a>
     {%endif%}
     </span>
-{% endblock %}
+</body>
+</html>
