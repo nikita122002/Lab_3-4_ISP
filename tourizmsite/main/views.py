@@ -23,7 +23,7 @@ def feedback(request):
             mail = send_mail(form.cleaned_data['subject'],form.cleaned_data['content'],'nikzxc98@mail.ru',['nik122002@outlook.com'],fail_silently=False)
             if mail:
                 messages.success(request,'Письмо отправлено')
-                return redirect ('feedback')
+                return redirect ('home')
             else:
                 messages.error(request,'Ошибка отправки')
         else:
