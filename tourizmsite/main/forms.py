@@ -7,7 +7,7 @@ class ContactForm(forms.Form):
     content = forms.CharField(label='Текст', widget=forms.Textarea(attrs={'class': 'form-control',"rows":10}))
 class UserLoginForm(AuthenticationForm):
     username = forms.CharField(label='Имя пользователя', widget=forms.TextInput(attrs={'class': 'form-control'}))
-    password = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={'class': 'form-control'},))
 
 
 class UserRegisterForm(UserCreationForm):

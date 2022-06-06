@@ -1,0 +1,12 @@
+body{
+background: url("log.jpg") center;
+background-size:cover;
+background-repeat: no-repeat;
+height:100vh;
+margin-top:90px;
+   }
+.container{
+padding:100px;
+background: rgba(205, 214, 219, 0.0);
+color:#00BFFF;
+}
