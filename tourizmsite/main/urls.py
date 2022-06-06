@@ -1,10 +1,10 @@
 
-from django.urls import path
+from django.urls import path, include
 from . import views
 from .views import register, user_login, user_logout, feedback, tourtype, tourplace, get_category, view_tourplace
 
 urlpatterns =[
-
+    path('products/',include('products.urls')),
     path('', views.home,name='home'),
     path('register/',register,name='register'),
     path('login/',user_login,name='login'),
