@@ -3,7 +3,6 @@ background: url("ozer.jpg") center;
 background-size:cover;
 background-repeat: no-repeat;
 height:100vh;
-margin-top:90px;
    }
 .list-group{
 padding:100px;
@@ -17,5 +16,16 @@ color:#CD6829;
 .container{
 padding:100px;
 background: rgba(205, 214, 219, 0.0);
-color:#00BFFF;
+color:#7FFFD4;
+}
+.nav-link{
+color:#87CEEB;
+}
+.navbar-brand{
+color:purple;
+}
+h3 {color: #F0FFFF;}
+.list-group-item{
+background: rgba(205, 214, 219, 0.0);
+color:#F0FFFF;
 }
