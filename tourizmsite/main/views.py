@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.shortcuts import redirect
 from django.core.mail import send_mail
 from .forms import UserRegisterForm,UserLoginForm,ContactForm
-from .models import TourizmType, TourPlace
+from .models import TourizmType, TourPlace, Category
 
 
 def home(request):
@@ -66,5 +66,20 @@ def tourtype(request):
 
 def tourplace(request):
     tourplace = TourPlace.objects.all()
-    return render(request,'main/tourplace.html',{'place':tourplace})
+    categories = Category.objects.all()
+    context ={
+        'place':tourplace,
+        'categories':categories,
+    }
+    return render(request,'main/tourplace.html',context=context)
+
+def get_category(request,category_id):
+    categ = TourPlace.objects.filter(category_id=category_id)
+    categories = Category.objects.all()
+    category = Category.objects.get(pk=category_id)
+    return render(request,'main/category.html',{'categ':categ,'categories':categories,'category':category})
+
+def view_tourplace(request,category_id):
+    tourplace_item= TourPlace.objects.get(pk=category_id)
+    return render(request,'main/view_tourplace.html',{"tourplace_item":tourplace_item})
 

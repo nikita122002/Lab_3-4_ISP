@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 
 class TourPlace(models.Model):
     title = models.CharField(max_length=150, verbose_name='Наименование')
@@ -9,7 +11,8 @@ class TourPlace(models.Model):
     photo = models.ImageField(upload_to='photos/%Y/%m/%d/', verbose_name='фото', blank=True)
     is_published = models.BooleanField(default=True, verbose_name='Опубликовано?')
     category = models.ForeignKey('Category', on_delete=models.PROTECT, null=True, verbose_name='Категории')
-
+    def get_absolute_url(self):
+        return reverse('view_tourplace',kwargs={"category_id":self.pk})
     def __str__(self):
         return self.title
 

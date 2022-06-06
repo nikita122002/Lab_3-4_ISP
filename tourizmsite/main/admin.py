@@ -17,7 +17,7 @@ admin.site.register(Category,CategoryAdmin)
 admin.site.register(TourizmType,TourizmTypeAdmin)
 
 class TourPlaceAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title','tourtype', 'created_at', 'updated_at', 'is_published')
+    list_display = ('id', 'title','tourtype','description', 'created_at', 'updated_at', 'is_published')
     list_display_links = ('id', 'title')
     search_fields = ('title', 'description')
     list_editable = ('is_published',)
