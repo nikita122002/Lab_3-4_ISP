@@ -13,36 +13,60 @@
 <body>
 <nav class="navbar navbar-expand-lg bg-light">
 
-        <a class="navbar-brand" >Популярные маршруты</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                {%if request.user.is_authenticated%}
-                <li class="nav-item">
-                    <a class="nav-link" href="{%url 'home'%}">Главная страница</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{%url 'tourtype'%}">Виды туризма</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="home">Товары для туризма</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{%url 'feedback'%}">Отзывы/обратная связь</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link">{{user.username}}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{%url 'logout'%}">Выход</a>
-                </li>
-                {%else%}
-                <a href="{% url 'register' %}">Регистрация</a> | <a  href="{% url 'login' %}">Войти</a>
-                {%endif%}
-            </ul>
-        </div>
+    <a class="navbar-brand" >Популярные маршруты</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            {%if request.user.is_authenticated%}
+            {% if user.is_superuser %}
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'home'%}">Главная страница</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'tourtype'%}">Виды туризма</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/products/customer/">Клиенты</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/products/products/">Заказы</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/products/dashboard/">Панель управления</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'feedback'%}">Отзывы/обратная связь</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link">{{user.username}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'logout'%}">Выход</a>
+            </li>
+            {%else%}
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'home'%}">Главная страница</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'tourtype'%}">Виды туризма</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'feedback'%}">Отзывы/обратная связь</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link">{{user.username}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'logout'%}">Выход</a>
+            </li>
+            {%endif%}
+            {% else %}
+            <a href="{% url 'register' %}">Регистрация</a> | <a  href="{% url 'login' %}">Войти</a>
+            {% endif %}
+        </ul>
+    </div>
 
 </nav>
 <div class="container mt-3">

@@ -19,34 +19,58 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                {%if request.user.is_authenticated%}
+              {%if request.user.is_authenticated%}
+            {% if user.is_superuser %}
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'home'%}">Главная страница</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'tourtype'%}">Виды туризма</a>
+            </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{%url 'home'%}">Главная страница</a>
+                    <a class="nav-link" href="{%url 'tourplace'%}">Популярные маршруты</a>
                 </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/products/customer/">Клиенты</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/products/products/">Заказы</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/products/dashboard/">Панель управления</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'feedback'%}">Отзывы/обратная связь</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link">{{user.username}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'logout'%}">Выход</a>
+            </li>
+            {%else%}
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'home'%}">Главная страница</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'tourtype'%}">Виды туризма</a>
+            </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{%url 'tourtype'%}">Виды туризма</a>
+                    <a class="nav-link" href="{%url 'tourplace'%}">Популярные маршруты</a>
                 </li>
-               <li class="nav-item">
-                    <a class="nav-link" href="/products/customer/">Клиенты</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/products/products/">Заказы</a>
-                </li>
-                 <li class="nav-item">
-                    <a class="nav-link" href="/products/dashboard/">Панель управления</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{%url 'feedback'%}">Отзывы/обратная связь</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link">{{user.username}}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{%url 'logout'%}">Выход</a>
-                </li>
-                {%else%}
-                <a href="{% url 'register' %}">Регистрация</a> | <a  href="{% url 'login' %}">Войти</a>
-                {%endif%}
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'feedback'%}">Отзывы/обратная связь</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link">{{user.username}}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'logout'%}">Выход</a>
+            </li>
+            {%endif%}
+            {% else %}
+            <a href="{% url 'register' %}">Регистрация</a> | <a  href="{% url 'login' %}">Войти</a>
+            {% endif %}
             </ul>
         </div>
 
