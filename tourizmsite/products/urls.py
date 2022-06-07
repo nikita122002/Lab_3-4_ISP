@@ -18,7 +18,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('add-product/',views.create,name='product_insert'),
+    path('products/',views.products,name='products'),
     path('customer/',views.customer,name='customer'),
+    path('dashboard/',views.dashboard,name='dashboard')
+
 
 ]
