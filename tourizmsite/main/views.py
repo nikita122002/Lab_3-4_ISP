@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.shortcuts import redirect
 from django.core.mail import send_mail
 from .forms import UserRegisterForm,UserLoginForm,ContactForm
-from .models import TourizmType, TourPlace, Category
+from .models import TourizmType, TourPlace, Category, Shop
 
 
 def home(request):
@@ -83,3 +83,6 @@ def view_tourplace(request,category_id):
     tourplace_item= TourPlace.objects.get(pk=category_id)
     return render(request,'main/view_tourplace.html',{"tourplace_item":tourplace_item})
 
+def shop(request):
+    shop = Shop.objects.all()
+    return render(request,'main/shop.html',{'shop':shop})

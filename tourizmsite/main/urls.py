@@ -13,7 +13,8 @@ urlpatterns =[
     path('tourtype/',tourtype,name='tourtype'),
     path('tourplace/',tourplace,name='tourplace'),
     path('category/<int:category_id>/',get_category),
-    path('main/<int:category_id>/',view_tourplace,name='view_tourplace')
+    path('main/<int:category_id>/',view_tourplace,name='view_tourplace'),
+    path('shop/',views.shop,name='shop')
 
 
 
