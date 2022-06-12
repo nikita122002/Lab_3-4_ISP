@@ -5,7 +5,9 @@ from django.shortcuts import redirect
 from django.core.mail import send_mail
 from .forms import UserRegisterForm, UserLoginForm, ContactForm
 from .models import TourizmType, TourPlace, Category, Shop
-
+import logging
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
 
 def home(request):
     return render(request, 'main/home.html')
@@ -23,12 +25,12 @@ def feedback(request):
             mail = send_mail(form.cleaned_data['subject'], form.cleaned_data['content'], 'nikzxc98@mail.ru',
                              ['nik122002@outlook.com'], fail_silently=False)
             if mail:
-                messages.success(request, 'Письмо отправлено')
+                logger.info(request, 'Письмо отправлено')
                 return redirect('home')
             else:
-                messages.error(request, 'Ошибка отправки')
+                logger.error(request, 'Ошибка отправки')
         else:
-            messages.error(request, 'Ошибка регистрации')
+            logger.error(request, 'Ошибка регистрации')
 
     else:
         form = ContactForm()
@@ -43,7 +45,7 @@ def register(request):
             login(request, user)
             return redirect('home')
         else:
-            messages.error(request, 'Ошибка регистрации')
+            logger.error(request, 'Ошибка регистрации')
 
     else:
         form = UserRegisterForm()

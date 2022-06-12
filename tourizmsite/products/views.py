@@ -3,7 +3,8 @@ from django.http import HttpResponse
 # Create your views here.
 from .models import *
 from .forms import OrderForm
-
+import asyncio
+from asgiref.sync import sync_to_async
 
 def products(request):
     products = Product.objects.all()
@@ -51,6 +52,7 @@ def create_order(request):
 
 def update_order(request, pk):
     order = Order.objects.get(id=pk)
+    order = asyncio.run(get_order_by_id(pk))
     form = OrderForm(instance=order)
 
     if request.method == 'POST':
@@ -71,3 +73,6 @@ def delete_order(request, pk):
 
     context = {'item': order}
     return render(request, 'products/delete.html', context)
+@sync_to_async
+def get_order_by_id(pk):
+    return Order.objects.get(id=pk)
