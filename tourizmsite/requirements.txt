@@ -6,3 +6,11 @@ pytest==6.1.2
 asgiref==3.5.2
 pip==21.1.2
 environ~=1.0
+sqlparse==0.4.2
+dj-config-url==0.1.1
+django-cors-headers==3.13.0
+django-environ==0.9.0
+cloudinary==1.29.0
+uuid==1.30
+django-crispy-forms==1.14.0
+dj_database_url==0.5.0
