@@ -1,6 +1,5 @@
 # Lab_3-4_ISP
 ## Aventure Travel
-##https://tourizmsite.herokuapp.com/
 ### Туристический сайт.Алгоритм работы:
 ### 1.Проходишь регистрацию
 ![Image](https://github.com/nikita122002/Lab_3-4_ISP/blob/main/tourizmsite/media/reg.png)
